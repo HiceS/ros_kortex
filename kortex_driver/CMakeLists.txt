@@ -82,34 +82,11 @@ if(USE_CONAN)
   conan_add_remote(NAME kinova_public
                   URL https://artifactory.kinovaapps.com/artifactory/api/conan/conan-public)
   get_closest_build_type(CONAN_BUILD_TYPE)
-  if("${CONAN_TARGET_PLATFORM}" STREQUAL "x86")
-    conan_cmake_run(CONANFILE conanfile.py
-                    UPDATE
-                    BASIC_SETUP CMAKE_TARGETS
-                    NO_OUTPUT_DIRS
-                    SETTINGS kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=5 kortex_api_cpp:compiler.libcxx=libstdc++11 kortex_api_cpp:build_type=${CONAN_BUILD_TYPE})
-  elseif("${CONAN_TARGET_PLATFORM}" STREQUAL "artik710")
-    conan_cmake_run(CONANFILE conanfile.py
-                    UPDATE
-                    BASIC_SETUP CMAKE_TARGETS
-                    NO_OUTPUT_DIRS
-                    SETTINGS kortex_api_cpp:arch=armv7 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=5 kortex_api_cpp:compiler.libcxx=libstdc++11 kortex_api_cpp:build_type=${CONAN_BUILD_TYPE}
-                    ENV TARGET=artik710)
-  elseif("${CONAN_TARGET_PLATFORM}" STREQUAL "imx6")
-    conan_cmake_run(CONANFILE conanfile.py
-                    UPDATE
-                    BASIC_SETUP CMAKE_TARGETS
-                    NO_OUTPUT_DIRS
-                    SETTINGS kortex_api_cpp:arch=armv7 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=6.4 kortex_api_cpp:compiler.libcxx=libstdc++11 kortex_api_cpp:build_type=${CONAN_BUILD_TYPE}
-                    ENV TARGET=imx6)
-  elseif("${CONAN_TARGET_PLATFORM}" STREQUAL "jetson")
-    conan_cmake_run(CONANFILE conanfile.py
-                    UPDATE
-                    BASIC_SETUP CMAKE_TARGETS
-                    NO_OUTPUT_DIRS
-                    SETTINGS kortex_api_cpp:arch=armv7 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=7 kortex_api_cpp:compiler.libcxx=libstdc++11 kortex_api_cpp:build_type=${CONAN_BUILD_TYPE}
-                    ENV TARGET=jetson)
-  endif()
+  conan_cmake_run(CONANFILE conanfile.py
+	    UPDATE
+	    BASIC_SETUP CMAKE_TARGETS
+	    NO_OUTPUT_DIRS
+	    SETTINGS kortex_api_cpp:arch=armv7 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=9 kortex_api_cpp:compiler.libcxx=libstdc++11 kortex_api_cpp:build_type=${CONAN_BUILD_TYPE})
 endif()
 
 include_directories(include ${catkin_INCLUDE_DIRS})
