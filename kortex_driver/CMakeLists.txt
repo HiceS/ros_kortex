@@ -86,7 +86,7 @@ if(USE_CONAN)
 	    UPDATE
 	    BASIC_SETUP CMAKE_TARGETS
 	    NO_OUTPUT_DIRS
-	    SETTINGS kortex_api_cpp:arch=armv7 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=9 kortex_api_cpp:compiler.libcxx=libstdc++11 kortex_api_cpp:build_type=${CONAN_BUILD_TYPE})
+	    SETTINGS kortex_api_cpp:arch=armv8 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=9 kortex_api_cpp:compiler.libcxx=libstdc++11 kortex_api_cpp:build_type=${CONAN_BUILD_TYPE})
 endif()
 
 include_directories(include ${catkin_INCLUDE_DIRS})
